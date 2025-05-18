@@ -165,17 +165,27 @@ export function ConversationProvider({ children }: { children: React.ReactNode }
                 isPending: true,
               };
 
-              // Append the pending message only once
+              // Only append the pending message if not already present
               setConversations(current =>
-                current.map(c =>
-                  c.id === currentConversationId
-                    ? {
-                        ...c,
-                        messages: [...c.messages, pendingMessage],
-                        updatedAt: new Date(),
-                      }
-                    : c
-                )
+                current.map(c => {
+                  if (c.id === currentConversationId) {
+                    const lastMsg = c.messages[c.messages.length - 1];
+                    if (
+                      lastMsg &&
+                      lastMsg.role === "assistant" &&
+                      lastMsg.isPending
+                    ) {
+                      // Already has a pending assistant message, do not add again
+                      return c;
+                    }
+                    return {
+                      ...c,
+                      messages: [...c.messages, pendingMessage],
+                      updatedAt: new Date(),
+                    };
+                  }
+                  return c;
+                })
               );
 
               // Streaming fetch logic

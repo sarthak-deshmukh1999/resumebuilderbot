@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';import { getRandomStudentProfile, expandedCourseData } from './courseData.js';
 import generateAdvancedRecommendationPrompt from './recommendationPrompt.js';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GEMINI_API_KEY } from './config.js'; // <-- import API key from config.js
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -18,13 +18,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 const port = 3001;
-dotenv.config();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 
 app.post('/api/chat', async (req, res) => {
   const userInput = req.body.userInput;
-  const studentProfile = getRandomStudentProfile();
   const recommendationPrompt = generateAdvancedRecommendationPrompt(
     mainTex,
     userInput

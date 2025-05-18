@@ -16,4 +16,5 @@ Instructions to generate apikey:
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Enable Gemini API
 3. Generate new api key
-4. Create .env file in server directory and paste apikey with key as GEMINI_API_KEY
+4. Create config.js file in server directory and paste apikey with key as 
+   - export const GEMINI_API_KEY = "your-api-key";
