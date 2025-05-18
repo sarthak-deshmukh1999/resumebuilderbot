@@ -123,8 +123,8 @@ export function ConversationProvider({ children }: { children: React.ReactNode }
         setCurrentConversationId(updatedConversations[0].id);
       } else if (updatedConversations.length === 0) {
         setCurrentConversationId(null);
-        // Create a new conversation if we deleted the last one
-        setTimeout(addConversation, 0);
+        // Remove this line to prevent auto-adding new conversation:
+        // setTimeout(addConversation, 0);
       }
 
       return updatedConversations;
