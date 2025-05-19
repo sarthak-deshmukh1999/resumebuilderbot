@@ -191,7 +191,7 @@ export function ConversationProvider({ children }: { children: React.ReactNode }
               // Streaming fetch logic
               (async () => {
                 try {
-                  const res = await fetch("http://localhost:3001/api/chat", {
+                  const res = await fetch("http://localhost:8080/api/chat", {
                     method: "POST",
                     headers: {
                       "Content-Type": "application/json",

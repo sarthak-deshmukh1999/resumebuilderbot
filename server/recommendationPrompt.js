@@ -32,15 +32,16 @@ YOUR TASKS
 - Provide final ATS score and briefly note improvements
 - special symbols in latex like $, #, and % precede with a backslash e.g. \$, \#, \%
 - optimize for high frequency of important technical skills given in job description
-- the relevancy score of the resume should be 98% or higher with respect to the job description
+- the relevancy/ATS score of the resume should be 98% or higher with respect to the job description
 - strictly follow the master resume format
 - keep the master resume syntax exactly the same just modify the content
 
 OUTPUT
 Return only:
 - A complete resume in latex syntax
-- Do not include explanations or extra text
+- Do not include explanations or extra text OR notes for improvement
 - keep the master resume syntax exactly the same just modify the content
+- Also give ATS score
 `;
 }
 

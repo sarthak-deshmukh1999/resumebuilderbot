@@ -19,8 +19,6 @@ export function MessageList({ messages, onEditMessage }: MessageListProps) {
   // Filter out system messages for display
   const displayMessages = messages.filter(message => message.role !== "system");
 
-  console.log("Rendering messages:", displayMessages);
-
   return (
     <ScrollArea ref={scrollAreaRef} className="h-full overflow-y-auto pr-4">
       <div className="pb-32">

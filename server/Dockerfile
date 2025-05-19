@@ -16,6 +16,6 @@ RUN npm install
 # Only copy server directory contents (not client)
 COPY . .
 
-EXPOSE 3001
+EXPOSE 8080
 
 CMD ["node", "server.js"]

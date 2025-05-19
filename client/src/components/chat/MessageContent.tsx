@@ -60,7 +60,7 @@ function ContentPartRenderer({ part, isDarkTheme }: MessageContentPartProps) {
   const handleDownload = async (latex: string) => {
     setDownloading(true);
     try {
-      const response = await fetch("http://localhost:3001/api/latextopdf", {
+      const response = await fetch("http://localhost:8080/api/latextopdf", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ latexCode: latex }),
