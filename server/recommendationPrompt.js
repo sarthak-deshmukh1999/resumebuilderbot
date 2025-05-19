@@ -1,16 +1,14 @@
 function generateAdvancedRecommendationPrompt(mainTex, userInput) {
     return `
-USER INPUT
-The user will provide:
-- A job description (text)
+## Input Data
+JOB DESCRIPTION:
+${userInput}
 
-JOB DESCRIPTION:${userInput}
-
-
-MASTER RESUME FORMAT:${mainTex}
+## Master Resume Template
+${mainTex}
 
 
-YOUR TASKS
+## Instructions
 - write a perfect resume that has good mix of technical and soft skills. Shows leadership skills and matches well with job description
 - Extract important keywords from the job description
 - Evaluate the user's resume for relevant information
@@ -19,7 +17,7 @@ YOUR TASKS
   Focus on measurable impact, keywords, and tools
   up to 4 bullet points
   must focus on: quantify impact, strong action verbs without repeating 
- example: "Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance across the platform."
+  example: "Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance across the platform."
  - Rewrite Projects
   must include all 3 projects
   Focus on measurable impact, keywords, and tools
@@ -39,7 +37,7 @@ YOUR TASKS
 OUTPUT
 Return only:
 - A complete resume in latex syntax
-- Do not include explanations or extra text OR notes for improvement
+- DO NOT include explanations, notes, or any text outside the LaTeX document except for the ATS score.
 - keep the master resume syntax exactly the same just modify the content
 - Also give ATS score
 `;
