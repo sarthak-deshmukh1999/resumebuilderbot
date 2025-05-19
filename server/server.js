@@ -20,7 +20,12 @@ const mainTex = fs.readFileSync(mainTexPath, 'utf8');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+app.use(cors({
+  origin: ['http://localhost:3000'],
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
