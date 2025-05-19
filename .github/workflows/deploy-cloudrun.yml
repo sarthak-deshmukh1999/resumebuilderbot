@@ -38,15 +38,16 @@ jobs:
 
       - name: Configure Docker for Google Artifact Registry
         run: |
-          gcloud auth configure-docker
+          gcloud auth configure-docker \
+          us-east1-docker.pkg.dev
 
       - name: Build Docker image
         run: |
-          docker build -t gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }} ./server
+          docker build -t us-east1-docker.pkg.dev/resumebuilder-460301/resumebuilder/${{ env.SERVICE_NAME }}:${{ github.sha }} ./server
 
       - name: Push Docker image
         run: |
-          docker push gcr.io/${{ env.PROJECT_ID }}/${{ env.SERVICE_NAME }}:${{ github.sha }}
+          docker push us-east1-docker.pkg.dev/resumebuilder-460301/resumebuilder/${{ env.SERVICE_NAME }}:${{ github.sha }}
 
       - name: Deploy to Cloud Run
         run: |
