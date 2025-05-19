@@ -30,7 +30,17 @@ app.use(cors({
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post('/api/chat', async (req, res) => {
-  const userInput = req.body.userInput;
+  //console.log('Received request:', req.body);
+  const conversation = req.body.conversation;
+  let userInput = "";
+  if (conversation && conversation.length > 0) {
+    const latestMessage = conversation[conversation.length - 1];
+    if (latestMessage.role === 'user' && latestMessage.content && Array.isArray(latestMessage.content) && latestMessage.content.length > 0 && latestMessage.content[0].type === 'text') {
+      userInput = latestMessage.content[0].content;
+    }
+  }
+  //console.log('Extracted userInput:', userInput);
+  //const userInput = req.body.content;
   const recommendationPrompt = generateAdvancedRecommendationPrompt(
     mainTex,
     userInput

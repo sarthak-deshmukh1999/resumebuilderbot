@@ -16,11 +16,13 @@ function generateAdvancedRecommendationPrompt(mainTex, userInput) {
   return `
 ## Input Data
 
-Job Description:
+---Begin Job Description---
 ${userInput}
+---End Job Description---
 
-## Master Resume Template
+---Begin Master Resume Template---
 ${mainTex}
+---End Master Resume Template---
 
 
 ## Instructions
@@ -29,12 +31,14 @@ ${mainTex}
 - Evaluate the user's resume for relevant information
 - Rewrite Experience using the Google XYZ format
   must include all past experiences
+  include all technologies mentioned in the job description 
   Focus on measurable impact, keywords, and tools
   up to 4 bullet points
   must focus on: quantify impact, strong action verbs without repeating 
   example: "Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance across the platform."
  - Rewrite Projects
   must include all 3 projects
+  include all technologies mentioned in the job description 
   Focus on measurable impact, keywords, and tools
   must have 4 bullet points with 20 words or more
   must focus on: quantify strong action verbs without repeating
@@ -48,13 +52,16 @@ ${mainTex}
 - the relevancy score of the resume should be 95% or higher with respect to the job description
 - strictly follow the master resume format
 - keep the master resume syntax exactly the same just modify the content
+- Make sure that the overall word count of the resume is 730 words or less
 
 OUTPUT
 Return only:
 - A complete resume in latex syntax
 - DO NOT include explanations, notes, or any text outside the LaTeX document except for the ATS score.
 - keep the master resume syntax exactly the same just modify the content
-- ATS score and relevancy score with respect to the job description
+- ATS score relevancy score with respect to the job description
+- Relevancy score with respect to the job description
+- A tailored cover letter in Markdown format
 `;
 }
 
