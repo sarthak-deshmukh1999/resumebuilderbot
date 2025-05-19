@@ -1,0 +1,25 @@
+ssh -i ~/.ssh/id_do root@164.90.136.56
+
+sudo apt-get update
+
+sudo apt-get install apt-transport-https ca-certificates gnupg curl
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+gcloud init
+
+scp -i ~/.ssh/id_do C:/Users/Sarthak/resumebuilder-460301-7bb12f1540c8.json root@164.90.136.56:/srv
+
+scp -i ~/.ssh/id_do C:/Users/Sarthak/resumebuilderbot/Dockerfile.texlive root@164.90.136.56:/srv
+
+gcloud auth activate-service-account --key-file=resumebuilder-460301-7bb12f1540c8.json
+
+apt  install docker.io
+
+gcloud auth configure-docker us-east1-docker.pkg.dev
+
+docker build -f Dockerfile.texlive -t artifact-repo-path/image-tag-name
+
+docker push artifact-repo-path/image-tag-name
