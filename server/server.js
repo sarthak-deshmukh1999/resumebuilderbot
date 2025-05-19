@@ -4,7 +4,7 @@ import generateAdvancedRecommendationPrompt from './recommendationPrompt.js';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from 'fs';
 import path from 'path';
-import { GEMINI_API_KEY } from './config.js';
+//import { GEMINI_API_KEY } from './config.js';
 import { fileURLToPath } from 'url';
 import latex from 'node-latex';
 import { Readable } from 'stream';
@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.post('/api/chat', async (req, res) => {
   const userInput = req.body.userInput;
