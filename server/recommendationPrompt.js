@@ -1,7 +1,22 @@
 function generateAdvancedRecommendationPrompt(mainTex, userInput) {
-    return `
+  if (!userInput || userInput === undefined) {
+    console.error("Job description is undefined or empty");
+    userInput = "No job description provided. Please provide a job description.";
+  }
+
+  if (!mainTex || mainTex === undefined) {
+    console.error("Master resume template is undefined or empty");
+    mainTex = "No resume template provided. Please provide a resume template.";
+  }
+
+  // Log for debugging
+  console.log("Job Description Length:", userInput?.length || 0);
+  console.log("Resume Template Length:", mainTex?.length || 0);
+
+  return `
 ## Input Data
-JOB DESCRIPTION:
+
+Job Description:
 ${userInput}
 
 ## Master Resume Template
@@ -30,7 +45,7 @@ ${mainTex}
 - Provide final ATS score and briefly note improvements
 - special symbols in latex like $, #, and % precede with a backslash e.g. \$, \#, \%
 - optimize for high frequency of important technical skills given in job description
-- the relevancy/ATS score of the resume should be 98% or higher with respect to the job description
+- the relevancy score of the resume should be 95% or higher with respect to the job description
 - strictly follow the master resume format
 - keep the master resume syntax exactly the same just modify the content
 
@@ -39,7 +54,7 @@ Return only:
 - A complete resume in latex syntax
 - DO NOT include explanations, notes, or any text outside the LaTeX document except for the ATS score.
 - keep the master resume syntax exactly the same just modify the content
-- Also give ATS score
+- ATS score and relevancy score with respect to the job description
 `;
 }
 

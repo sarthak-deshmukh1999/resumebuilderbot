@@ -1,0 +1,8 @@
+FROM node:20-slim
+
+RUN apt-get update && \
+    apt-get install -y texlive-full && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set default paper size
+RUN echo "letter" > /etc/papersize
