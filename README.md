@@ -11,6 +11,7 @@ A modern, AI-powered resume and cover letter builder that leverages Google Gemin
   - [Features](#features)
   - [Tech Stack](#tech-stack)
   - [Architecture Overview](#architecture-overview)
+  - [Deployment](#deployment)
   - [Screenshots](#screenshots)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
@@ -64,6 +65,27 @@ A modern, AI-powered resume and cover letter builder that leverages Google Gemin
 - The frontend collects user input (job description, etc.) and communicates with the backend.
 - The backend generates a prompt, sends it to Gemini, and returns the AI-generated LaTeX resume and cover letter.
 - The backend can also convert LaTeX to PDF and stream it back to the user.
+- **The backend server is containerized with Docker and deployed on Google Cloud Run for scalable, serverless operation.**
+
+---
+
+## Deployment
+
+- The backend server is deployed on **Google Cloud Run** using a **Docker** container.
+- To deploy your own instance:
+  1. Build the Docker image in the `server` directory:
+     ```sh
+     docker build -t resumebuilderbot-server .
+     ```
+  2. Push the image to Google Artifact Registry.
+  3. Deploy to Cloud Run:
+     ```sh
+     gcloud run deploy resumebuilderbot-server \
+       --image artifact-repo-path/[PROJECT-ID]/resumebuilderbot-server \
+       --region [REGION] \
+       --set-env-vars GEMINI_API_KEY=your-gemini-api-key-here
+     ```
+  4. Update your frontend to use the Cloud Run backend URL.
 
 ---
 
@@ -202,4 +224,4 @@ resumebuilderbot/
 
 - **PDF Export Fails:** Ensure `pdflatex` is installed and available in your system PATH.
 - **Gemini API Errors:** Check your API key and Google Cloud billing status.
-- **
+- **Docker/Cloud Run Issues:** Ensure Docker is installed and configured, and check Cloud Run logs for errors.
