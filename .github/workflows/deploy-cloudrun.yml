@@ -55,8 +55,7 @@ jobs:
             --image us-east1-docker.pkg.dev/resumebuilder-460301/resumebuilder/${{ env.SERVICE_NAME }}:${{ github.sha }} \
             --region ${{ env.REGION }} \
             --service-account=${{ env.SERVICE_ACCOUNT}} \
-            --set-env-vars GEMINI_API_KEY=${{ env.GEMINI_API_KEY }} \    
-            --allow-unauthenticated        
+            --set-env-vars GEMINI_API_KEY=${{ env.GEMINI_API_KEY }}     
 
       - name: Output Cloud Run URL
         run: |

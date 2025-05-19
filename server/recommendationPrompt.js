@@ -4,11 +4,11 @@ USER INPUT
 The user will provide:
 - A job description (text)
 
-JOB DESCRIPTION:
-${userInput}
+JOB DESCRIPTION:${userInput}
 
-MASTER RESUME FORMAT:
-${mainTex}
+
+MASTER RESUME FORMAT:${mainTex}
+
 
 YOUR TASKS
 - write a perfect resume that has good mix of technical and soft skills. Shows leadership skills and matches well with job description
