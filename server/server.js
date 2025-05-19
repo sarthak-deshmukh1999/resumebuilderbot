@@ -6,6 +6,8 @@ import { GEMINI_API_KEY } from './config.js'; // <-- import API key from config.
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import latex from 'node-latex';
+import { Readable } from 'stream';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -46,6 +48,45 @@ app.post('/api/chat', async (req, res) => {
     console.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   }
+});
+
+app.post('/api/latextopdf', async (req, res) => {
+  const { latexCode } = req.body;
+  if (!latexCode) {
+    return res.status(400).json({ error: 'Missing latexCode in request body' });
+  }
+
+  // If you see "pdflatex is not installed or not in PATH." in your logs,
+  // you must install a TeX distribution (TeX Live or MikTeX) and ensure pdflatex is in your PATH.
+  // This is a server environment requirement, not a code issue.
+  // Example for Ubuntu: sudo apt-get install texlive-latex-base
+
+  const { exec } = await import('child_process');
+  exec('pdflatex --version', (error) => {
+    if (error) {
+      console.error('pdflatex is not installed or not in PATH.');
+      return res.status(500).json({ error: 'pdflatex is not installed on the server. Please install a TeX distribution (e.g., TeX Live or MikTeX) and ensure pdflatex is in your PATH.' });
+    }
+
+    try {
+      // Convert string to readable stream
+      const input = Readable.from([latexCode]);
+      const pdfStream = latex(input);
+
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', 'attachment; filename="resume.pdf"');
+
+      pdfStream.on('error', (err) => {
+        console.error('LaTeX compile error:', err);
+        res.status(500).end('Failed to generate PDF');
+      });
+
+      pdfStream.pipe(res);
+    } catch (err) {
+      console.error('PDF generation error:', err);
+      res.status(500).json({ error: 'Failed to generate PDF' });
+    }
+  });
 });
 
 app.listen(port, () => {

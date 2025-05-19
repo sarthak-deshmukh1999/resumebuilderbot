@@ -11,7 +11,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import { MessageContentPart } from "@/types";
 import { useTheme } from "@/context/ThemeContext";
 import { Button } from "@/components/ui/button";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Download } from "lucide-react";
 
 interface MessageContentProps {
   content: MessageContentPart[];
@@ -49,11 +49,36 @@ interface CodeProps {
 
 function ContentPartRenderer({ part, isDarkTheme }: MessageContentPartProps) {
   const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
 
   const handleCopy = (text: string) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleDownload = async (latex: string) => {
+    setDownloading(true);
+    try {
+      const response = await fetch("http://localhost:3001/api/latextopdf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ latexCode: latex }),
+      });
+      if (!response.ok) throw new Error("Failed to generate PDF");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "resume.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      alert("Failed to download PDF.");
+    }
+    setDownloading(false);
   };
 
   switch (part.type) {
@@ -62,10 +87,46 @@ function ContentPartRenderer({ part, isDarkTheme }: MessageContentPartProps) {
         <div className="whitespace-pre-wrap">{part.content}</div>
       );
 
+    case "latex":
+      return (
+        <div className="py-2 flex items-center gap-2">
+          <span>
+            {part.content.includes("\\begin{") || part.content.includes("\\[") ? (
+              <BlockMath math={part.content} />
+            ) : (
+              <InlineMath math={part.content} />
+            )}
+          </span>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+            title="Download as PDF"
+            onClick={() => handleDownload(part.content)}
+            disabled={downloading}
+          >
+            <Download size={16} />
+          </Button>
+        </div>
+      );
+
     case "code":
       return (
         <div className="relative rounded-md overflow-hidden">
-          <div className="absolute right-2 top-2 z-10">
+          <div className="absolute right-2 top-2 z-10 flex gap-2">
+            {/* Download button (for LaTeX code blocks, optional: only show if part.language === 'latex') */}
+            {part.language === "latex" && (
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                title="Download as PDF"
+                onClick={() => handleDownload(part.content)}
+                disabled={downloading}
+              >
+                <Download size={16} />
+              </Button>
+            )}
             <Button
               variant="ghost"
               size="icon"
@@ -86,17 +147,6 @@ function ContentPartRenderer({ part, isDarkTheme }: MessageContentPartProps) {
           >
             {part.content}
           </SyntaxHighlighter>
-        </div>
-      );
-
-    case "latex":
-      return (
-        <div className="py-2">
-          {part.content.includes("\\begin{") || part.content.includes("\\[") ? (
-            <BlockMath math={part.content} />
-          ) : (
-            <InlineMath math={part.content} />
-          )}
         </div>
       );
 
@@ -121,7 +171,20 @@ function ContentPartRenderer({ part, isDarkTheme }: MessageContentPartProps) {
 
                 return (
                   <div className="relative rounded-md overflow-hidden my-4">
-                    <div className="absolute right-2 top-2 z-10">
+                    <div className="absolute right-2 top-2 z-10 flex gap-2">
+                      {/* Download button for LaTeX code blocks in markdown */}
+                      {language === "latex" && (
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8"
+                          title="Download as PDF"
+                          onClick={() => handleDownload(String(children).replace(/\n$/, ''))}
+                          disabled={downloading}
+                        >
+                          <Download size={16} />
+                        </Button>
+                      )}
                       <Button
                         variant="ghost"
                         size="icon"

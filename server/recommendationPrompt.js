@@ -20,16 +20,17 @@ YOUR TASKS
   up to 4 bullet points
   must focus on: quantify impact, strong action verbs without repeating 
  example: "Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance across the platform."
+ - Rewrite Projects
+  must include all 3 projects
+  Focus on measurable impact, keywords, and tools
+  must have 4 bullet points with 20 words or more
+  must focus on: quantify strong action verbs without repeating
 - Generate a complete LaTeX resume using the provided main.tex format
 - Sections: Summary, Technical Skills, Experience, Projects, Education
 - Use only defined LaTeX macros (\resumeSubheading, \resumeItem, etc.)
 - Create a tailored cover letter in Markdown format
 - Provide final ATS score and briefly note improvements
 - special symbols in latex like $, #, and % precede with a backslash e.g. \$, \#, \%
-- each experience point must have 4 bullets
-- each project must have 4 bullets with 20 words or more
-- must include 2 experiences
-- must include 3 projects
 - optimize for high frequency of important technical skills given in job description
 - the relevancy score of the resume should be 98% or higher with respect to the job description
 - strictly follow the master resume format

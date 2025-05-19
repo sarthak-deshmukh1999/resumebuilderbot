@@ -4,7 +4,7 @@
 % License : MIT
 %------------------------
 
-\documentclass[letterpaper,9pt]{extarticle}
+\documentclass[letterpaper,8pt]{extarticle}
 \linespread{1.01}
 
 \usepackage{latexsym}
