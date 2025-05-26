@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: ['http://localhost:3000'],
+  origin: ['http://localhost:9002','http://localhost:3000'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -47,7 +47,14 @@ app.post('/api/chat', async (req, res) => {
   );
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-04-17" });
-    const result = await model.generateContentStream([recommendationPrompt]);
+    const result = await model.generateContentStream([recommendationPrompt],
+      {
+        temperature: 0.2,
+        topP: 0.8,
+        topK: 40,
+        maxOutputTokens: 2048,
+      }
+    );
     res.setHeader('Content-Type', 'text/event-stream');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
@@ -56,8 +63,10 @@ app.post('/api/chat', async (req, res) => {
       const content = chunk.text();
       if (content) {
         res.write(`data: ${JSON.stringify({ content })}\n\n`);
+        // console.log(content+"\n\n");
       }
     }
+    
     res.write('data: [DONE]\n\n');
     res.end();
   } catch (error) {

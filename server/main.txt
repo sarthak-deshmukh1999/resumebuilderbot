@@ -109,8 +109,8 @@
     \href{mailto:deshmukh.sar@northeastern.edu}{\underline{deshmukh.sar@northeastern.edu}} $|$ 
     \href{https://www.linkedin.com/in/sarthakdeshmukh1999}{\underline{linkedin.com/in/sarthakdeshmukh1999}} $|$
     Boston, MA $|$
-    \href{https://github.com/sarthak-wq}
-    {\underline{github.com/sarthak-wq}} $|$
+    \href{https://github.com/sarthak-deshmukh1999}
+    {\underline{github.com/sarthak-deshmukh1999}} $|$
     \href{https://sarthakdeshmukh.com}
     {\underline{sarthakdeshmukh.com}}    
 \end{center}
