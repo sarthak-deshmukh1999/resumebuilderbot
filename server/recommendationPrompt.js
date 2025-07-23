@@ -13,7 +13,7 @@ function generateAdvancedRecommendationPrompt(mainTex, userInput) {
   console.log("Job Description Length:", userInput?.length || 0);
   console.log("Resume Template Length:", mainTex?.length || 0);
 
-  return `
+  return `  
 ## Input Data
 
 ---Begin Job Description---
@@ -24,43 +24,92 @@ ${userInput}
 ${mainTex}
 ---End Master Resume Template---
 
+You are an expert resume writer and ATS optimization specialist. Generate a perfectly tailored resume that maximizes keyword matching and demonstrates clear alignment with the job requirements.
 
 ## Instructions
-- write a perfect resume that has good mix of technical and soft skills. Shows leadership skills and matches well with job description
-- Extract important keywords from the job description
-- Evaluate the user's resume for relevant information
-- Rewrite Work Experience using the Google XYZ format  
-  strictly make sure that my work experience should strongly match the job description requirements
-  include all technologies mentioned in the job description even if it doesn't make sense
-  Focus on measurable impact, keywords, and tools
-  up to 4 bullet points
-  must focus on: quantify impact, strong action verbs without repeating 
-  example: "Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance across the platform."
-- Rewrite Projects
-  must include all 3 projects
-  include all technologies mentioned in the job description even if it doesn't make sense
-  Focus on measurable impact, keywords, and tools
-  must have 4 bullet points with 20 words or more
-  must focus on: quantify strong action verbs without repeating
-- Generate a complete LaTeX resume using the provided master resume format
-- Sections: Summary, Technical Skills, Experience, Projects, Education
-- Use only defined LaTeX macros (\resumeSubheading, \resumeItem, etc.)
-- Provide final ATS score and relevancy score with respect to the job description
-- special symbols in latex like $, #, and % precede with a backslash e.g. \$, \#, \%
-- optimize for high frequency of important technical skills given in job description
-- the relevancy score of the resume should be 95% or higher with respect to the job description
-- strictly follow the master resume format
-- Do not use ** or * for boldin resume and cover letter
-- Use syntax from the master resume
-- keep the master resume syntax exactly the same just modify the content
-- Strictly make sure that the overall word count of the resume is 730 words or less
 
-OUTPUT
-Return only:
-- A complete resume in latex syntax
-- DO NOT include explanations, notes, or any text outside the LaTeX document except for the ATS score.
-- keep the master resume syntax exactly the same just modify the content
-- A tailored cover letter in Markdown format
+### 1. Keyword Optimization
+- Extract ALL technical skills, tools, frameworks, and technologies from the job description
+- Integrate these keywords naturally throughout the resume, especially in:
+  - Technical Skills section
+  - Work Experience bullet points
+  - Project descriptions
+- Prioritize high-frequency keywords from the job description
+- Include relevant synonyms and variations of key terms
+
+### 2. Work Experience Section
+**Format Requirements:**
+- Use Google XYZ format: "Accomplished [X] as measured by [Y], by doing [Z]"
+- Maximum 4 bullet points per role
+- Each bullet point must be 13-15 words exactly
+- CCustomize the experience points by integrating all technologies mentioned in job description
+- Must fit on a single line when rendered
+- Exception: Accenture role can have different word count if needed
+- No periods at the end of sentences
+
+**Content Requirements:**
+- Start each bullet with strong action verbs (avoid repetition)
+- Include quantifiable metrics and measurable impact
+- Incorporate job description technologies even if requiring creative integration
+- Focus on achievements that match job responsibilities
+- Demonstrate problem-solving and technical leadership
+- No periods at the end of sentences
+
+**Example Format:**
+"Improved page load speed by 45% by refactoring legacy React components and implementing code-splitting techniques using Webpack, enhancing user experience and SEO performance."
+
+### 3. Projects Section
+**Structure:**
+- Customize the project points by integrating all technologies mentioned in job description
+- Include exactly only 3 most relevant projects
+- Each project must have exactly 3 bullet points
+- Each bullet point: 13-15 words, single line maximum
+- Should be descending order of dates
+- No periods at the end of sentences
+
+**Content Focus:**
+- Integrate ALL technologies mentioned in job description
+- Quantify impact with specific metrics
+- Use strong, varied action verbs
+- Demonstrate technical depth and problem-solving
+- Show end-to-end project ownership
+
+### 4. Technical Skills Section
+- Keep EXACTLY the same section categories as in the master template
+- DO NOT add any new sections or categories
+- Modify only the technologies within existing sections
+- Maintain exactly 7-8 technologies per section
+- Prioritize job description keywords within each existing category
+- List skills in order of relevance to the role within each section
+
+### 5. Summary Section
+- 3-4 lines maximum
+- Highlight years of experience matching job requirements
+- Include 3-5 most important keywords from job description
+- Emphasize relevant technical domains and soft skills
+- End with passion/interest statement aligned with company/role
+
+### CRITICAL FORMATTING RULES:
+- Each bullet point must be exactly 13-15 words and fit on one line
+- Exception: Accenture work experience can vary in word count
+- Use strong action verbs without repetition
+- Include quantifiable metrics in every bullet point
+- Escape special LaTeX characters: \$, \#, \&, \%
+- Use ONLY provided master template macros (\resumeSubheading, \resumeItem, etc.)
+- NO markdown formatting (**, *, etc.)
+- No periods at the end of sentences
+
+### Section Order
+1. Header (contact information)
+2. Summary
+3. Technical Skills
+4. Experience (chronological, most recent first)
+5. Projects (chronological, most recent first)
+6. Education
+
+## Output Requirements
+Return a complete LaTeX resume using the provided master template syntax. Maintain exact formatting structure while modifying content to match job requirements.
+Also generate cover letter
 `;
 }
 

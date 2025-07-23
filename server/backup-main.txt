@@ -1,0 +1,245 @@
+%-------------------------
+% Resume in Latex
+% Author : Sarthak Deshmukh
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,8pt]{extarticle}
+\linespread{1.01}
+
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{pstricks}
+\usepackage{pst-barcode}
+\usepackage{xcolor}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.3in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{2pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\begin{center}
+    \textbf{\Huge \scshape Sarthak Deshmukh} \\ \vspace{1pt}        
+    \(+\)1 857-397-6144 $|$ 
+    \href{mailto:deshmukh.sar@northeastern.edu}{\underline{deshmukh.sar@northeastern.edu}} $|$ 
+    \href{https://www.linkedin.com/in/sarthakdeshmukh1999}{\underline{linkedin.com/in/sarthakdeshmukh1999}} $|$
+    Boston, MA $|$
+    \href{https://github.com/sarthak-deshmukh1999}
+    {\underline{github.com/sarthak-deshmukh1999}} $|$
+    \href{https://sarthakdeshmukh.com}
+    {\underline{sarthakdeshmukh.com}}    
+\end{center}
+
+\section{Summary}
+      {\textbf{Full Stack Developer} with \textbf{3+ years} of experience designing and deploying scalable, cloud-native web applications using \textbf{C\#, .NET Core, Python, Node.js, React} and \textbf{AWS}. Recognized for driving innovation in \textbf{GenAI}-powered \textbf{chatbot} development, with strong contributions to automation, performance optimization, and \textbf{AI-driven} user experiences. Skilled in building distributed systems, implementing \textbf{serverless} architectures \textbf{(Lambda, API Gateway, MySQL)}, and leveraging AWS \textbf{SageMaker} for \textbf{Machine Learning} integration. Experienced in \textbf{DevOps} practices, \textbf{CI/CD} pipelines, and infrastructure management on \textbf{AWS} and \textbf{Azure}, with a strong focus on \textbf{security}, observability, and user-centric design.}
+          
+      
+%-----------EXPERIENCE-----------
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Full Stack Developer}{\textbf{June 2021 -- July 2024}}
+      {Accenture}{Mumbai, India}
+      \resumeItemListStart
+        \resumeItem{Developed and deployed scalable features for a \textbf{GenAI}-powered chatbot using \textbf{C\#, .NET Core, Python, Node.js, React} integrated with \textbf{Github Actions} pipelines for \textbf{CI/CD} and \textbf{SQL} Server for relational data storage. Designed APIs to interface with \textbf{LLM}-driven intent handlers, enabling dynamic, context-aware user responses}
+        \resumeItem{Engineered automation workflows using \textbf{AWS Lambda}, Step Functions, and EventBridge to periodically ingest and update chatbot knowledge base content, reducing manual effort by \textbf{50\%} and ensuring real-time adaptation to evolving business requirements}
+        \resumeItem{Enhanced and extended \textbf{Microsoft Bot Framework} capabilities, optimizing dialog flow logic and intent classification with pre-trained \textbf{Machine Learning} models hosted via \textbf{SageMaker} endpoints, achieving a \textbf{10\%} improvement in response latency and increased intent accuracy}
+        \resumeItem{Built \textbf{RESTful} APIs and media processing pipelines using \textbf{AWS API Gateway}, \textbf{Lambda} (Python runtime), \textbf{S3}, and \textbf{MySQL}, enabling efficient storage and transformation of user-generated audio and video files for conversational analytics}
+        \resumeItem{Collaborated scrum cross-functionally with \textbf{DevOps} and \textbf{Data Science} teams to integrate \textbf{AI}-driven insights into the chatbot’s decision-making process, using \textbf{AWS Comprehend} for \textbf{sentiment analysis} and \textbf{CloudWatch}/X-Ray for end-to-end observability and performance tracing}
+      \resumeItemListEnd
+      
+    \resumeSubheading
+      {Software Engineer Intern}{\textbf{July 2020 -- March 2021}}
+      {IT Networkz Infosystems}{Nagpur, India}
+      \resumeItemListStart
+        \resumeItem{Engineered and optimized backend services using \textbf{{C\#, .NET Core, Python, Node.js, React} and \textbf{AWS Lambda}, replacing legacy PHP code and reducing application response times by \textbf{30\%}, resulting in faster load times and improved user satisfaction}}
+        \resumeItem{Contributed to the full-stack development of scalable web applications using \textbf{Java}, \textbf{SpringBoot} (backend), and AWS Cloud services (\textbf{API Gateway}, \textbf{Lambda}, \textbf{RDS}), implementing serverless architecture that drove a \textbf{25\%} boost in user engagement through high availability and performance}
+        \resumeItem{Designed and deployed \textbf{RESTful} APIs using \textbf{Express.js} and \textbf{AWS API Gateway}, integrating with \textbf{MongoDB} and \textbf{MySQL} for flexible data storage and ensuring secure, scalable interactions between front-end clients and backend services}
+        \resumeItem{Implemented \textbf{CI/CD} pipelines with \textbf{GitHub Actions} and \textbf{AWS} CodePipeline, automating build, test, and deployment workflows to ensure faster delivery cycles, reduced downtime, and enhanced \textbf{DevOps} efficiency}
+    \resumeItemListEnd    
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Northeastern University}{\textbf{Boston, MA}}
+      {Master of Science in Information Systems}{Sep. 2024 -- Graduating April 2026}
+    \resumeSubheading
+      {Nagpur University}{\textbf{Nagpur, India}}
+      {Bachelor of Engineering in Computer Science}{August 2017 -- April 2021}
+  \resumeSubHeadingListEnd
+
+  
+%-----------PROJECTS-----------
+\section{Projects} 
+    \resumeSubHeadingListStart
+    \resumeProjectHeading          {\textbf{\href{https://github.com/AgentHacks/MemExLens_Server}{MemExLens - Semantic Browsing History Chrome Extension}} $|$ \emph{\textbf{Python, Google Cloud Run, Docker, Pinecone}}}{\textbf{May 2025}}
+          \resumeItemListStart
+            \resumeItem{Engineered a Chrome browser extension that transforms browsing history into an intelligent knowledge base, enabling \textbf{natural language queries} over previously visited web content with \textbf{semantic search} capabilities}
+            \resumeItem{Developed scalable backend architecture using \textbf{Flask API} using \textbf{Python} and deployed server application on \textbf{Google Cloud Run} with \textbf{Docker} containerization and \textbf{Artifact Registry} for reliable cloud deployment and auto-scaling}
+            \resumeItem{Implemented automated content extraction and processing pipeline using \textbf{Gemini Generative AI API} for intelligent webpage analysis, generating high-quality \textbf{vector embeddings} for semantic understanding and retrieval}
+            \resumeItem{Built modern, responsive user interface using \textbf{Next.js} framework, integrating with \textbf{Pinecone vector database} for fast similarity search across thousands of browsing sessions with \textbf{low-latency performance}}
+            \resumeItem{Created secure \textbf{user-isolated data architecture} ensuring complete privacy, with each user's browsing data stored and processed independently using modern \textbf{authentication} and data segregation techniques}
+          \resumeItemListEnd
+    \resumeProjectHeading
+          {\textbf{\href{https://github.com/SarthakOrg/tf-aws-infra}{AWS Cloud Infrastructure}} $|$ \emph{\textbf{Packer, Terraform, EC2, Load Balancer, Auto Scaler, Github Actions}}}{\textbf{Jan. 2025 -- April 2025}}
+          \resumeItemListStart
+            \resumeItem{Designed and Implemented Scalable AWS Infrastructure with Terraform - Developed reusable \textbf{Terraform} modules to provision AWS resources, including \textbf{VPCs, subnets, EC2} instances, RDS databases, \textbf{S3 buckets}, and \textbf{Auto Scaling Groups}, ensuring scalability and modularity}
+            \resumeItem{Automated Deployment with \textbf{CI/CD} Integration - 
+            Configured \textbf{GitHub Actions} workflows to automate Terraform plan, validate, and apply processes, enabling seamless infrastructure deployment and updates}
+            \resumeItem{Enhanced \textbf{Security and Compliance} - 
+            Implemented \textbf{IAM roles, KMS encryption, and Secrets Manager} for secure access to sensitive data, ensuring compliance with best practices for cloud security}
+            \resumeItem{Optimized High Availability and Performance - 
+            Configured Application \textbf{Load Balancers, Route 53 DNS, and Auto Scaling policies} to achieve high availability, fault tolerance, and optimized resource utilization}
+            \resumeItem{Implemented Cost-Effective Resource Management - Configured \textbf{Auto Scaling Groups and CloudWatch alarms} to dynamically scale resources based on CPU utilization, optimizing cost and performance}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{\href{https://enrollfrontend.vercel.app/}{AI Course Advisor}} $|$ \emph{\textbf{React, Redux, Express, MySQL, AWS, GitHub Actions}}}{\textbf{Nov. 2024 -- Dec. 2024}}
+          \resumeItemListStart
+            \resumeItem{Developed an AI-driven course advisory web app using \textbf{React, Node.js, Express, Material UI} and \textbf{Llama-70b via Groq API}, delivering personalized academic recommendations with advanced \textbf{prompt engineering} techniques}
+            \resumeItem{Implemented JWT-based authentication with HTTP-only cookies, enhancing application security and session management}
+            \resumeItem{Integrated \textbf{Agentic AI} patterns and \textbf{machine learning} logic to track user behavior, analyze academic progress, and intelligently update course recommendations in real time}
+            \resumeItem{Deployed on \textbf{AWS EC2} (Linux) with Nginx reverse proxy, automating builds and deployment via \textbf{GitHub Actions} and \textbf{AWS CLI} for seamless cloud operations}            
+          \resumeItemListEnd        
+      
+          % \resumeProjectHeading
+          % {\textbf{\href{https://github.com/sarthak-wq/ETest-System}{Online Examination Web Application}} $|$ \emph{\textbf{Python, AWS, Git, AWS, Docker}}}{\textbf{May 2018 -- May 2020}}
+          % \resumeItemListStart
+          %   \resumeItem{Engineered a scalable online examination platform supporting thousands of concurrent users, with \textbf{low-latency performance} and robust \textbf{monitoring} features and OAuth2, JWT, SSO}
+          %   \resumeItem{Implemented real-time proctoring using \textbf{computer vision} techniques via the \textbf{OpenCV} Python library, enabling accurate eye tracking and behavioral analysis to uphold exam integrity}
+          %   \resumeItem{Developed screen activity monitoring systems using \textbf{machine learning} and \textbf{deep learning} models, applying computer vision to detect anomalies and prevent cheating during assessments}
+          %   \resumeItem{Provisioned and deployed \textbf{cloud infrastructure} on \textbf{AWS Lambda} using \textbf{Terraform}, ensuring high availability, auto-scaling capabilities, and \textbf{fault-tolerant} performance under peak loads}
+          %   \resumeItem{Applied \textbf{Natural Language Processing} for automated question processing and grading workflows, and used \textbf{Git} for secure \textbf{version control} of question banks and application logic}
+          % \resumeItemListEnd
+          
+    \resumeSubHeadingListEnd
+
+
+
+%
+%-----------PROGRAMMING SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Java, Python, C\#, JavaScript, TypeScript, HTML5, CSS3} \\
+     \textbf{Frameworks}{: React, Redux, Next.js, Express.js, Java, Material-UI, Maven/Gradle, Jest} \\
+     \textbf{Developer Tools}{:  JUnit, Postman, Amazon Web Services (AWS), Lambda, EC2, S3, SQS, SNS, SES, Kubernetes, Docker, Terraform, CloudWatch, Git, JIRA, Google App Engine, Google Cloud Run} \\
+     \textbf{Other}{: RESTful APIs, RDBMS, CI/CD Pipelines, FireStore, Linux, Agile Development, Software Development Life Cycle (SDLC), GitHub Actions, GitLab CI,OAuth2, JWT, SSO}\\
+     \textbf{Certifications}{: \href{https://www.credly.com/badges/b5455199-fa07-40b6-8a81-8d17c352e26a/public_url}{Azure Developer Associate}, \href{https://www.credly.com/badges/b752a755-c456-4891-9198-d3941ee409bc/public_url}{Azure Fundamentals}, \href{https://www.credly.com/badges/9d9f0d04-abf8-487a-99b5-3fa1a4167568/public_url}{Microsoft Certified Professional} }
+    }}
+ \end{itemize}
+
+
+%-----------Research Publication-----------
+% \section{Research Publication}
+%   \resumeSubHeadingListStart
+
+%     \resumeProjectHeading
+%       {\textbf{\href{http://sersc.org/journals/index.php/IJGDC/article/view/35042}{International E-conference on Machine Learning and Artificial Intelligence \faLink\ }}}{Jan. 2021}{}{}
+%       \resumeItemListStart
+%         \resumeItem{Published a paper on AI in education focusing on enhancing student engagement }
+%         \resumeItem{Explored ways to visualize examination architecture in a largscale setting}
+%       \resumeItemListEnd    
+
+%   \resumeSubHeadingListEnd
+
+  %-----------Achievements/Extra Curicullar-----------
+% \section{Achievements/Extra-Curricular}     
+%       \resumeItemListStart
+%       \resumeItem{\textbf{Event Organizer} for Techfest 2020 at Nagpur University, coordinated logistics, managed team communications, and helped organize workshops and panels, attracting 500+ participants}
+%         \resumeItem{\textbf{Volunteered} as a \textbf{mentor} for high school students learning coding, helping them develop problem-solving and programming skills, fostering a passion for technology}        
+%       \resumeItemListEnd    
+  \end{document}

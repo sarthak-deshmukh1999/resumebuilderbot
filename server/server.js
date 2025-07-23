@@ -4,7 +4,7 @@ import generateAdvancedRecommendationPrompt from './recommendationPrompt.js';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from 'fs';
 import path from 'path';
-//import { GEMINI_API_KEY } from './config.js';
+import { GEMINI_API_KEY } from './config.js';
 import { fileURLToPath } from 'url';
 import latex from 'node-latex';
 import { Readable } from 'stream';
@@ -27,7 +27,7 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || GEMINI_API_KEY);
 
 app.post('/api/chat', async (req, res) => {
   //console.log('Received request:', req.body);
@@ -46,7 +46,7 @@ app.post('/api/chat', async (req, res) => {
     userInput
   );
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-04-17" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const result = await model.generateContentStream([recommendationPrompt],
       {
         temperature: 0.2,
